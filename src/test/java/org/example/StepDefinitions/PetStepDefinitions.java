@@ -13,6 +13,7 @@ import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import org.example.Questions.ResponseCode;
 import org.example.Tasks.GetPet;
 import org.example.Tasks.PostPet;
+import org.example.Tasks.PutPet;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -43,5 +44,10 @@ public class PetStepDefinitions {
     @When("el actor consulta la mascota por su id")
     public void elActorConsultaLaMascotaPorSuId() {
         theActorInTheSpotlight().attemptsTo(GetPet.fromPage());
+    }
+
+    @When("el actor actualiza la mascota con {string} {string} {string} {string}")
+    public void elActorActualizaLaMascotaCon(String name, String category, String photoUrl, String status) {
+        theActorInTheSpotlight().attemptsTo(PutPet.actualizar(name,category,photoUrl,status));
     }
 }

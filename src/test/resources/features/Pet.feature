@@ -22,3 +22,15 @@ Feature: APIS from Pet
       And el actor crea una mascota con el "Milanesa" "Gato" "https://example.com/photoMilanesa.jpg" "vendido"
       When el actor consulta la mascota por su id
       Then el codigo de respuesta debe ser 200
+
+    @CP_03Pet @Put_Pet @Update_Pet
+      Scenario Outline: Actualizar mascota
+      Given el actor establece el endpoint de petStore
+      And el actor crea una mascota con el "Tobias" "Cuy" "https://example.com/tobias.jpg" "frito"
+      When el actor actualiza la mascota con "<name>" "<category>" "<photoUrl>" "<status>"
+      Then  el codigo de respuesta debe ser 200
+      Examples:
+        | name | category | photoUrl | status |
+        | Cirilo  | cabra | https://example.com/cabra.jpg | vendido|
+
+
