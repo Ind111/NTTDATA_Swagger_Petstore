@@ -14,3 +14,11 @@ Feature: APIS from Pet
     Examples:
     | name  | category  | photoUrl  | status  |
     | Chiqui | Perro      | https://example.com/photo.jpg | disponible |
+
+
+    @CP_02Pet @Get_Pet @Read_Pet
+      Scenario: Consultar mascota por id
+      Given el actor establece el endpoint de petStore
+      And el actor crea una mascota con el "Milanesa" "Gato" "https://example.com/photoMilanesa.jpg" "vendido"
+      When el actor consulta la mascota por su id
+      Then el codigo de respuesta debe ser 200

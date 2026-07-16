@@ -11,6 +11,7 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import org.example.Questions.ResponseCode;
+import org.example.Tasks.GetPet;
 import org.example.Tasks.PostPet;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -37,5 +38,10 @@ public class PetStepDefinitions {
     @Then("el codigo de respuesta debe ser {int}")
     public void elCodigoDeRespuestaDebeSer(int responseCode) {
         theActorInTheSpotlight().should(seeThat("El código de respuesta", ResponseCode.getStatus(), equalTo(responseCode)));
+    }
+
+    @When("el actor consulta la mascota por su id")
+    public void elActorConsultaLaMascotaPorSuId() {
+        theActorInTheSpotlight().attemptsTo(GetPet.fromPage());
     }
 }
