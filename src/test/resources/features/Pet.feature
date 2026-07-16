@@ -33,4 +33,10 @@ Feature: APIS from Pet
         | name | category | photoUrl | status |
         | Cirilo  | cabra | https://example.com/cabra.jpg | vendido|
 
+    @CP_04Pet @Delete_Pet
+      Scenario: Eliminar mascota
+      Given el actor establece el endpoint de petStore
+      And el actor crea una mascota con el "Mathilda" "Vaca" "https://example.com/vaca.jpg" "vendida"
+      When el actor elimina a la mascota
+      Then el codigo de respuesta debe ser 200
 

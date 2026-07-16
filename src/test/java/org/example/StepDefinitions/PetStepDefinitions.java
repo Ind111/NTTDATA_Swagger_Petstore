@@ -11,6 +11,7 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import org.example.Questions.ResponseCode;
+import org.example.Tasks.DeletePet;
 import org.example.Tasks.GetPet;
 import org.example.Tasks.PostPet;
 import org.example.Tasks.PutPet;
@@ -49,5 +50,10 @@ public class PetStepDefinitions {
     @When("el actor actualiza la mascota con {string} {string} {string} {string}")
     public void elActorActualizaLaMascotaCon(String name, String category, String photoUrl, String status) {
         theActorInTheSpotlight().attemptsTo(PutPet.actualizar(name,category,photoUrl,status));
+    }
+
+    @When("el actor elimina a la mascota")
+    public void elActorEliminaALaMascota() {
+        theActorInTheSpotlight().attemptsTo(DeletePet.delete());
     }
 }
